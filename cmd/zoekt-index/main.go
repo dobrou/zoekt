@@ -17,9 +17,9 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"runtime/pprof"
 	"strings"
@@ -131,8 +131,7 @@ func indexArg(arg string, opts build.Options, ignore map[string]struct{}) error 
 			})
 			continue
 		}
-		//content, err := ioutil.ReadFile(f.name)
-		content, err := exec.Command("strings", "-nobanner", f.name).Output()
+		content, err := ioutil.ReadFile(f.name)
 		if err != nil {
 			return err
 		}
