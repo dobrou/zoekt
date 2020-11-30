@@ -298,8 +298,15 @@ func (b *Builder) Add(doc zoekt.Document) error {
 	if len(doc.Content) > b.opts.SizeMax && !b.opts.IgnoreSizeMax(doc.Name) {
 		doc.SkipReason = fmt.Sprintf("document size %d larger than limit %d", len(doc.Content), b.opts.SizeMax)
 	} else if err := zoekt.CheckText(doc.Content, b.opts.TrigramMax); err != nil {
-		doc.SkipReason = err.Error()
-		doc.Language = "binary"
+
+		// retry with string fallback
+		xcontent, _ := exec.Command("strings", "-nobanner", doc.Name).Output()
+		doc.Content = xcontent
+
+		if err := zoekt.CheckText(doc.Content, b.opts.TrigramMax); err != nil {
+			doc.SkipReason = "XXX" + err.Error()
+			doc.Language = "binary"
+		}
 	}
 
 	b.todo = append(b.todo, &doc)
@@ -533,7 +540,7 @@ func (b *Builder) writeShard(fn string, ib *zoekt.IndexBuilder) (*finishedShard,
 		return nil, err
 	}
 
-	f, err := ioutil.TempFile(dir, filepath.Base(fn) + ".*.tmp")
+	f, err := ioutil.TempFile(dir, filepath.Base(fn)+".*.tmp")
 	if err != nil {
 		return nil, err
 	}

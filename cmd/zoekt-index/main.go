@@ -126,7 +126,7 @@ func indexArg(arg string, opts build.Options, ignore map[string]struct{}) error 
 		displayName := strings.TrimPrefix(f.name, dir+"/")
 		if f.size > int64(opts.SizeMax) && !opts.IgnoreSizeMax(displayName) {
 			builder.Add(zoekt.Document{
-				Name:       displayName,
+				Name:       f.name,
 				SkipReason: fmt.Sprintf("document size %d larger than limit %d", f.size, opts.SizeMax),
 			})
 			continue
