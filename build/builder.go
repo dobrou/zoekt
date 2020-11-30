@@ -302,9 +302,10 @@ func (b *Builder) Add(doc zoekt.Document) error {
 		// retry with string fallback
 		xcontent, _ := exec.Command("strings", "-nobanner", doc.Name).Output()
 		doc.Content = xcontent
+		log.Printf("Strings fallback used for " + doc.Name)
 
 		if err := zoekt.CheckText(doc.Content, b.opts.TrigramMax); err != nil {
-			doc.SkipReason = "XXX" + err.Error()
+			doc.SkipReason = err.Error()
 			doc.Language = "binary"
 		}
 	}
