@@ -25,7 +25,7 @@ import (
 
 	"github.com/kylelemons/godebug/pretty"
 
-	"github.com/google/zoekt/query"
+	"github.com/dobrou/zoekt/query"
 )
 
 func clearScores(r *SearchResult) {

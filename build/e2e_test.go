@@ -27,9 +27,9 @@ import (
 
 	"golang.org/x/net/context"
 
-	"github.com/google/zoekt"
-	"github.com/google/zoekt/query"
-	"github.com/google/zoekt/shards"
+	"github.com/dobrou/zoekt"
+	"github.com/dobrou/zoekt/query"
+	"github.com/dobrou/zoekt/shards"
 )
 
 func TestBasic(t *testing.T) {

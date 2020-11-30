@@ -27,10 +27,10 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/google/zoekt"
-	"github.com/google/zoekt/build"
-	"github.com/google/zoekt/query"
-	"github.com/google/zoekt/shards"
+	"github.com/dobrou/zoekt"
+	"github.com/dobrou/zoekt/build"
+	"github.com/dobrou/zoekt/query"
+	"github.com/dobrou/zoekt/shards"
 )
 
 func createSubmoduleRepo(dir string) error {

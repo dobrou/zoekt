@@ -20,8 +20,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/google/zoekt"
-	"github.com/google/zoekt/build"
+	"github.com/dobrou/zoekt"
+	"github.com/dobrou/zoekt/build"
 )
 
 var (

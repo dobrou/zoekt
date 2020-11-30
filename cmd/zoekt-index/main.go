@@ -24,9 +24,9 @@ import (
 	"runtime/pprof"
 	"strings"
 
-	"github.com/google/zoekt"
-	"github.com/google/zoekt/build"
-	"github.com/google/zoekt/cmd"
+	"github.com/dobrou/zoekt"
+	"github.com/dobrou/zoekt/build"
+	"github.com/dobrou/zoekt/cmd"
 	"go.uber.org/automaxprocs/maxprocs"
 )
 

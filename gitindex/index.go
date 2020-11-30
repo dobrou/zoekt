@@ -29,8 +29,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/google/zoekt"
-	"github.com/google/zoekt/build"
+	"github.com/dobrou/zoekt"
+	"github.com/dobrou/zoekt/build"
 
 	"github.com/go-git/go-git/v5/config"
 	"github.com/go-git/go-git/v5/plumbing"
